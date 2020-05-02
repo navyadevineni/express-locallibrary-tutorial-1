@@ -1,26 +1,26 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
+let catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 
-var compression = require('compression');
-var helmet = require('helmet');
+let compression = require('compression');
+let helmet = require('helmet');
 
-var app = express();
+let app = express();
 
 
 // Set up mongoose connection
-var mongoose = require('mongoose');
-var dev_db_url = 'mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true'
-var mongoDB = process.env.MONGODB_URI || dev_db_url;
+let mongoose = require('mongoose');
+let dev_db_url = 'mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true'
+let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
-var db = mongoose.connection;
+let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 

@@ -1,9 +1,9 @@
-var Author = require('../models/author')
-var async = require('async')
-var Book = require('../models/book')
+let Author = require('../models/author')
+let async = require('async')
+let Book = require('../models/book')
 
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
+let { body, validationResult } = require('express-validator/check');
+let { sanitizeBody } = require('express-validator/filter');
 
 // Display list of all Authors.
 exports.author_list = function (req, res, next) {
@@ -72,7 +72,7 @@ exports.author_create_post = [
         const errors = validationResult(req);
         
         // Create Author object with escaped and trimmed data
-        var author = new Author(
+        let author = new Author(
             {
                 first_name: req.body.first_name,
                 family_name: req.body.family_name,
